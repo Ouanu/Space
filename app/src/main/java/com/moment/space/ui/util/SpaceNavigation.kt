@@ -8,6 +8,7 @@ object SpaceDestination{
     const val NEWS_ROUTE = "news"
     const val TASK_ROUTE = "task"
     const val ROCKET_ROUTE = "rocket"
+    const val CONTENT_ROUTE = "content"
 }
 
 class SpaceNavigation(navController: NavHostController) {
@@ -16,6 +17,7 @@ class SpaceNavigation(navController: NavHostController) {
             popUpTo(navController.graph.findStartDestination().id) {
                 saveState = true
             }
+
             launchSingleTop = true
             restoreState = true
         }
@@ -36,6 +38,15 @@ class SpaceNavigation(navController: NavHostController) {
             popUpTo(navController.graph.findStartDestination().id) {
                 saveState = true
             }
+            launchSingleTop = true
+            restoreState = true
+        }
+    }
+    val navigationToContent: () -> Unit = {
+        navController.navigate(SpaceDestination.CONTENT_ROUTE) {
+//            popUpTo(navController.graph.findStartDestination().id) {
+//                saveState = true
+//            }
             launchSingleTop = true
             restoreState = true
         }

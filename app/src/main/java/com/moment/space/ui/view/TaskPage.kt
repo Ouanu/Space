@@ -45,7 +45,7 @@ fun TaskItem() {
                     .padding(bottom = 5.dp)
             ) {
                 Text(
-                    text = "国家：中国",
+                    text = "国家（机构）：中国（航天五院）",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier

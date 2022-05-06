@@ -1,9 +1,11 @@
 package com.moment.space.ui.view
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,11 +27,12 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.moment.space.R
+import com.moment.space.ui.util.SpaceNavigation
 
 @ExperimentalFoundationApi
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun NewsPage() {
+fun NewsPage(navigation: SpaceNavigation) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize(),
@@ -92,7 +95,7 @@ fun NewsPage() {
         }
         items(20) {
             Divider(modifier = Modifier.padding(vertical = 10.dp))
-            NewsItem()
+            NewsItem(navigation)
         }
     }
 }
@@ -144,11 +147,15 @@ fun HotNews() {
 }
 
 @Composable
-fun NewsItem() {
+fun NewsItem(navigation: SpaceNavigation) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 10.dp),
+            .padding(horizontal = 10.dp)
+            .clickable(enabled = true, onClick = {
+                Log.d("NewsPage", "NewsItem: click")
+                navigation.navigationToContent()
+            }),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
@@ -171,7 +178,7 @@ fun NewsItem() {
             Text(
                 text = "科学家发现脉一冲星释出巨大物质带 包含大量正物质和反物质",
                 maxLines = 2,
-                fontSize = 18.sp,
+                fontSize = 16.sp,
                 textAlign = TextAlign.Start,
                 overflow = TextOverflow.Ellipsis,
                 fontFamily = FontFamily.Cursive,

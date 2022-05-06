@@ -63,6 +63,7 @@ fun SpaceApp(controller: NavHostController) {
             ) {
                 SpaceNavGraph(
                     controller = controller,
+                    navigation = navigationActions,
                     openDrawer = { coroutineScope.launch { drawerState.open() } }
                 )
             }
