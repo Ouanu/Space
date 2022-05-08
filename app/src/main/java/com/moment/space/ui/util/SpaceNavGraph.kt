@@ -35,7 +35,7 @@ fun SpaceNavGraph(
             DataPage()
         }
         composable(SpaceDestination.CONTENT_ROUTE){
-            NewsContentPage()
+            NewsContentPage(controller)
         }
     }
 }
